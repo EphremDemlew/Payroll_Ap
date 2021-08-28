@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Payroll_Ap.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,11 @@ namespace Payroll_Ap.Controllers
 {
     public class Department : Controller
     {
+
         public IActionResult Index()
         {
             return View();
         }
+
     }
 }

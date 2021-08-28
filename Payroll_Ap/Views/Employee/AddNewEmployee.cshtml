@@ -1,0 +1,102 @@
+﻿@model Employee
+
+
+<div class="card">
+    <div class="card-header mr-5 d-flex justify-content-sm-end ">
+        <a asp-action=""  class="btn btn-outline-primary btn-sm" ><i class="fa fa-fast-backward"></i> Back To Employee</a>
+    </div>
+
+                <div class="modal-body">
+                    @* form *@
+
+                    <form method="post">
+                        <div class="input-group mb-3">
+                            <input asp-for="fullName" class="form-control" placeholder="Full name">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="email" class="form-control" placeholder="Email">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="phoneNumber" class="form-control" placeholder="Phone Number">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fa fa-phone"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="salary" class="form-control" placeholder="salary">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-money-bill"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="age" class="form-control" placeholder="Age">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="gender" class="form-control" placeholder="Gender">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-venus-mars"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="jobTitle" class="form-control" placeholder="Job Title">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-receipt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="fuculity" class="form-control" placeholder="Faculty">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-sitemap"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="department" class="form-control" placeholder="Department">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-sitemap"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="userName" class="form-control" placeholder="Marital Status">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-people-carry"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <a type="button" class="btn btn-default" asp-action="">Close</a>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+
+                </div>
+
+
+</div>

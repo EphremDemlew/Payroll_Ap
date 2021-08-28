@@ -1,9 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Payroll_Ap.Models;
+using Payroll_Ap.Repository;
+using Payroll_Ap.Views.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +29,15 @@ namespace Payroll_Ap
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+    
+            services.AddScoped<EmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +59,8 @@ namespace Payroll_Ap
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

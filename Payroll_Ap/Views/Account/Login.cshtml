@@ -1,0 +1,91 @@
+﻿@model Payroll_Ap.Models.SignInModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/logo2.png" />
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition register-page">
+
+    <div class="register-box">
+        <div class="card card-outline card-danger">
+            <div class="card-header text-center">
+                <a href="#" class="h1"><b>UoG</b> Payroll</a>
+            </div>
+            <div class="card-body">
+
+                <form asp-action="Login">
+
+                    <div class="form-group input-group d-flex flex-column">
+                        <div class="input-group-append">
+                            <input asp-for="Email" class="form-control" placeholder="Email" />
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group input-group d-flex flex-column">
+                        <div class="input-group-append">
+                            <input asp-for="Password" class="form-control" placeholder="Password" />
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                        </label>
+                    </div>
+                    <div class="form-group d-flex justify-content-around">
+                        <input type="submit" value="Login" class="btn btn-outline-primary" />
+                        <a asp-action="Signup" asp-controller="Account" class="btn btn-primary">Register</a>
+                    </div>
+                </form>
+
+
+
+
+
+
+
+               
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
+</body>
+</html>
