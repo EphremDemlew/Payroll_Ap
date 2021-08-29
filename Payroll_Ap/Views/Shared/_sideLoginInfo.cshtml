@@ -1,0 +1,13 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
+
+
+@if (_signInManager.IsSignedIn(User))
+{
+    <div class="info">
+        <a href="/home/profile" class="d-block">@(User.FindFirst("UserFirstName").Value + " " + User.FindFirst("UserLastName").Value)</a>
+    </div>
+}
+else
+{
+    
+}

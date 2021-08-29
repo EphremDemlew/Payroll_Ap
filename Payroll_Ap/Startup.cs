@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Payroll_Ap.Helpers;
 using Payroll_Ap.Models;
 using Payroll_Ap.Repository;
 using Payroll_Ap.Views.Repository;
@@ -36,7 +37,12 @@ namespace Payroll_Ap
     
             services.AddScoped<EmployeeRepository, EmployeeRepository>();
             services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimsPrincipalFactory>();
 
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.LoginPath = "/login";
+            });
 
         }
 
@@ -58,15 +64,15 @@ namespace Payroll_Ap
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseAuthentication();
-
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapDefaultControllerRoute();
+
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=home}/{action=Index}/{id?}");
             });
         }
     }

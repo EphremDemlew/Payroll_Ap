@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Payroll_Ap.Models;
 using Payroll_Ap.Views.Repository;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Payroll_Ap.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly EmployeeRepository _employeeRepository = null;

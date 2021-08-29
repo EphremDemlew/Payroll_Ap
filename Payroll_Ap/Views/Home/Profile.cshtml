@@ -1,4 +1,5 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
+
 @{
     ViewData["Title"] = "Profile";
 }
@@ -13,24 +14,28 @@
 
         <h3 class="profile-username text-center">
             @ViewData["Name"]
-                Ephrem Demlew
-            </h3>
+            @(User.FindFirst("UserFirstName").Value + " " + User.FindFirst("UserLastName").Value)
+        </h3>
 
         <p class="text-muted text-center">Software Engineer</p>
+        @if (_signInManager.IsSignedIn(User))
+        {
+            <ul class="list-group list-group-unbordered mb-3">
+                <li class="list-group-item">
+                    <b>Name</b> <a class="float-right">@(User.FindFirst("UserFirstName").Value + " " + User.FindFirst("UserLastName").Value)</a>
+                </li>
+                <li class="list-group-item">
+                    <b>Phone Number</b> <a class="float-right">09090909</a>
+                </li>
+                <li class="list-group-item">
 
-        <ul class="list-group list-group-unbordered mb-3">
-            <li class="list-group-item">
-                <b>Name</b> <a class="float-right">Ephrem Demlew</a>
-            </li>
-            <li class="list-group-item">
-                <b>Phone Number</b> <a class="float-right">09543</a>
-            </li>
-            <li class="list-group-item">
-                <b>email</b> <a class="float-right">email@gmail.com</a>
-            </li>
-        </ul>
+                    <b>email</b> <a class="float-right">@User.Identity.Name</a>
 
-        <a href="#" class="btn btn-primary btn-block"><b>Edit</b></a>
-    </div>
+                </li>
+            </ul>
+        }
+
+            <a href="#" class="btn btn-primary btn-block"><b>Edit</b></a>
+        </div>
     <!-- /.card-body -->
 </div>
