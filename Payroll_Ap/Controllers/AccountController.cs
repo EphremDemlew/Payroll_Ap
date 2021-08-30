@@ -48,6 +48,7 @@ namespace Payroll_Ap.Controllers
             return View(userModel);
         }
         [Route("login")]
+        [Route("")]
         public IActionResult Login()
         {
             return View();

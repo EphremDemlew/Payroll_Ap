@@ -43,6 +43,7 @@ namespace Payroll_Ap
             {
                 config.LoginPath = "/login";
             });
+           
 
         }
 
@@ -68,11 +69,16 @@ namespace Payroll_Ap
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
+                //endpoints.MapDefaultControllerRoute();
 
                 //endpoints.MapControllerRoute(
                 //    name: "default",
                 //    pattern: "{controller=home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "",
+                    pattern: "{controller=Account}/{action=login}/{id?}"
+                    
+                    );
             });
         }
     }

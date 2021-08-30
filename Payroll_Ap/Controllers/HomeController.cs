@@ -20,6 +20,8 @@ namespace Payroll_Ap.Controllers
         {
             _logger = logger;
         }
+        [Route("/Home")]
+        [Route("/Home/Index")]
 
         public IActionResult Index()
         {
