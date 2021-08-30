@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="form-group input-group d-flex flex-column">
-                        <div class="input-group-append">
+                        <div class="input-group-append outline">
                             <input asp-for="Password" class="form-control" placeholder="Password" />
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -58,13 +58,13 @@
                     </div>
 
                     <div class="form-group form-check">
-                        <label class="form-check-label">
+                        <label class="form-check-label outl">
                             <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
                         </label>
                     </div>
                     <div class="form-group d-flex justify-content-around">
-                        <input type="submit" value="Login" class="btn btn-outline-primary" />
-                        <a asp-action="Signup" asp-controller="Account" class="btn btn-primary">Register</a>
+                        <input type="submit" value="Login" class="btn btn-outline-danger text-white text-bold" />
+                        <a asp-action="Signup" asp-controller="Account" class="btn btn-danger text-bold">Register</a>
                     </div>
                 </form>
 
