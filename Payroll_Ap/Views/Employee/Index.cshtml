@@ -7,7 +7,7 @@
 
 <div class="card">
     <div class="card-header mr-5 d-flex justify-content-sm-end">
-        <a href="Employee/AddNewEmployee"  class="btn btn-outline-primary btn-sm" ><i class="fa fa-plus"></i> Add Employee</a>
+        <a asp-action="AddNewEmployee" asp-controller="Employee" class="btn btn-outline-primary btn-sm" ><i class="fa fa-plus"></i> Add Employee</a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -38,7 +38,7 @@
                     <td>@employee.salary</td>
                     <td>@employee.age</td>
                     <td>@employee.jobTitle</td>
-                    <td><strong><a href="#">Edit</a> &nbsp; <a href="#">Delete</a></strong></td>
+                    <td><strong><a asp-action="Edit" asp-controller="Employee" asp-route-id="@employee.Id">Edit</a> &nbsp; <a asp-action="Delete" asp-controller="Employee" asp-route-id="@employee.Id" >Delete</a></strong></td>
                 </tr>
                 }
             </tbody>

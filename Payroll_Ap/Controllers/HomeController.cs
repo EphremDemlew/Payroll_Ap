@@ -22,7 +22,6 @@ namespace Payroll_Ap.Controllers
         }
         [Route("/Home")]
         [Route("/Home/Index")]
-
         public IActionResult Index()
         {
             return View();
