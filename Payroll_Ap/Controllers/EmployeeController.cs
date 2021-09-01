@@ -19,42 +19,76 @@ namespace Payroll_Ap.Controllers
         {
             _employeeRepository = employeeRepository;
         }
-        
+
+        [Route("/Employee")]
         public async Task<ViewResult> Index()
         {
             var data = await _employeeRepository.GetAllEmployee();
             return View(data);
         }
 
-        public IActionResult getAllEmployee()
+        [Route("/Employee/Delete")]
+        public IActionResult Delete(int id)
         {
-            return View();
+
+            var delt = _employeeRepository.Delete(id);
+            return RedirectToAction(actionName: nameof(Index));
+
+
         }
+
+        [Route("/Employee/Edit")]
+        public async Task<ViewResult> Edit(int id)
+        {
+            var data = await _employeeRepository.GetBookById(id);
+            return View(data);
+        }
+
         public ViewResult AddNewEmployee()
         {
 
             return View();
         }
 
-        public Employee GetEmployee(int id)
-        {
-            return _employeeRepository.GetEmployeeById(id);
-        }
-        public List<Employee> SearchEmployees(string fullname, string departmentname)
-        {
-            return _employeeRepository.SearchEmployee(fullname, departmentname);
-        }
+        //public Employee GetEmployee(int id)
+        //{
+        //    return _employeeRepository.GetEmployeeByIdAsync(id);
+        //}
+        //public List<Employee> SearchEmployees(string fullname, string departmentname)
+        //{
+        //    return _employeeRepository.SearchEmployee(fullname, departmentname);
+        //}
 
 
 
         [HttpPost]
         public async Task<IActionResult> AddNewEmployee(Employee employeeModel)
         {
-
-            int eid = await _employeeRepository.AddNewEmployee(employeeModel);
-            if ( eid > 0 )
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(AddNewEmployee) , new { isSucess = true } );
+
+                int eid = await _employeeRepository.AddNewEmployee(employeeModel);
+                if ( eid > 0 )
+                {
+                    return RedirectToAction(nameof(AddNewEmployee) , new { isSucess = true } );
+
+                }
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditPost(Employee employeeModel)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var eid =  _employeeRepository.Update(employeeModel);
+                if (eid != null)
+                {
+                    return RedirectToAction(nameof(Index));
+
+                }
             }
             return View();
         }
@@ -111,7 +145,7 @@ namespace Payroll_Ap.Controllers
         //    }
 
         //    [HttpDelete]
-        //    public async Task<IActionResult> Delete(int id)
+        //    public async Task<IActionResult> Delete(int id)   
         //    {
         //        var empFromDb = await _db.Employees.FirstOrDefaultAsync(u => u.Id == id);
         //        if (empFromDb == null)

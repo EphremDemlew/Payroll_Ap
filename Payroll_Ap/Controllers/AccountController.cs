@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Payroll_Ap.Models;
 using Payroll_Ap.Repository;
 using System;
@@ -20,6 +21,7 @@ namespace Payroll_Ap.Controllers
 
 
         [Route("signup")]
+        [Authorize(Roles ="Admin")]
         public IActionResult Signup()
         {
             return View();
@@ -48,6 +50,7 @@ namespace Payroll_Ap.Controllers
             return View(userModel);
         }
         [Route("login")]
+        [Route("")]
         public IActionResult Login()
         {
             return View();
