@@ -38,7 +38,7 @@
                     <td>@employee.salary</td>
                     <td>@employee.age</td>
                     <td>@employee.jobTitle</td>
-                    <td><strong><a asp-action="Edit" asp-controller="Employee" asp-route-id="@employee.Id">Edit</a> &nbsp; <a asp-action="Delete" asp-controller="Employee" asp-route-id="@employee.Id" >Delete</a></strong></td>
+                    <td><strong><a asp-action="Edit" asp-controller="Employee" asp-route-id="@employee.Id" class="btn btn-success">Edit</a> &nbsp; <a asp-action="Delete" asp-controller="Employee" asp-route-id="@employee.Id" class="btn btn-danger">Delete</a></strong></td>
                 </tr>
                 }
             </tbody>
