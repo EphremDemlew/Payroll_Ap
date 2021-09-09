@@ -4,16 +4,28 @@
 }
 @model Employee
 
+@if(ViewBag.IsSucess == true)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Congratulations</strong> You have added new employee successfully. <br />
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
 
-<div class="card">
+
+<div class="card m-5">
     <div class="card-header mr-5 d-flex justify-content-sm-end ">
         <a asp-action="" class="btn btn-outline-primary btn-sm"><i class="fa fa-backward"></i> Back To Employee</a>
     </div>
 
-    <div class="modal-body">
-        @* form *@
+    <div class="modal-body mx-sm-5">
 
-        <form method="post">
+
+        <form method="post" asp-action="AddNewEmployee" asp-controller="Employee">
+
+
             <div class="input-group mb-3 d-flex flex-column">
                 <div class="input-group-append">
                     <input asp-for="fullName" class="form-control" placeholder="Full name">
@@ -51,7 +63,7 @@
                 <div class="input-group-append">
                     <input asp-for="salary" class="form-control" placeholder="salary">
                     <div class="input-group-text">
-                        <span class="fas fa-money-bill"></span>
+                        <span class="fas fa-dollar-sign"></span>
                     </div>
                 </div>
                 <div>
@@ -71,13 +83,28 @@
             </div>
             <div class="input-group mb-3 d-flex flex-column">
                 <div class="input-group-append">
-                    <input asp-for="gender" class="form-control" placeholder="Gender">
+                    <select asp-for="gender" class="form-control" placeholder="Gender">
+                        <option value="">Please select a Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
                     <div class="input-group-text">
                         <span class="fas fa-venus-mars"></span>
                     </div>
                 </div>
                 <div>
                     <span asp-validation-for="gender" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="input-group mb-3 d-flex flex-column">
+                <div class="input-group-append">
+                    <input asp-for="account_number" class="form-control" placeholder="Account Number">
+                    <div class="input-group-text">
+                        <span class="fas fa-euro-sign"></span>
+                    </div>
+                </div>
+                <div>
+                    <span asp-validation-for="account_number" class="text-danger"></span>
                 </div>
             </div>
             <div class="input-group mb-3 d-flex flex-column">
@@ -94,40 +121,119 @@
             </div>
             <div class="input-group mb-3 d-flex flex-column">
                 <div class="input-group-append ">
-                    <input asp-for="fuculity" class="form-control" placeholder="Faculty">
+                    <input asp-for="faculity" class="form-control" placeholder="Faculty">
                     <div class="input-group-text">
                         <span class="fas fa-sitemap"></span>
                     </div>
                 </div>
                 <div>
-                    <span asp-validation-for="fuculity" class="text-danger"></span>
+                    <span asp-validation-for="faculity" class="text-danger"></span>
                 </div>
             </div>
             <div class="input-group mb-3 d-flex flex-column">
                 <div class="input-group-append">
                     <input asp-for="department" class="form-control" placeholder="Department">
                     <div class="input-group-text">
-                        <span class="fas fa-sitemap"></span>
+                        <span class="fas fa-layer-group"></span>
                     </div>
                 </div>
                 <div>
                     <span asp-validation-for="department" class="text-danger"></span>
                 </div>
             </div>
+
+
             <div class="input-group mb-3 d-flex flex-column">
                 <div class="input-group-append">
-                    <input asp-for="userName" class="form-control" placeholder="Marital Status">
+                    <input asp-for="advance" class="form-control" placeholder="Advance" required>
                     <div class="input-group-text">
-                        <span class="fas fa-people-carry"></span>
+                        <span class="fas fa-layer-group"></span>
                     </div>
                 </div>
                 <div>
-                    <span asp-validation-for="userName" class="text-danger"></span>
+                    <span asp-validation-for="advance" class="text-danger"></span>
                 </div>
             </div>
+
+            <div class="input-group mb-3 d-flex flex-column">
+                <div class="input-group-append">
+                    <input asp-for="others" class="form-control" placeholder="Other Ded" required>
+                    <div class="input-group-text">
+                        <span class="fas fa-layer-group"></span>
+                    </div>
+                </div>
+                <div>
+                    <span asp-validation-for="others" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="input-group mb-3 d-flex flex-column">
+                <div class="input-group-append">
+                    <input asp-for="saving" class="form-control" placeholder="Saving" required>
+                    <div class="input-group-text">
+                        <span class="fas fa-layer-group"></span>
+                    </div>
+                </div>
+                <div>
+                    <span asp-validation-for="saving" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="input-group mb-3 d-flex flex-column">
+                <div class="input-group-append">
+                    <input asp-for="ourt" class="form-control" placeholder="Court Order" required>
+                    <div class="input-group-text">
+                        <span class="fas fa-layer-group"></span>
+                    </div>
+                </div>
+                <div>
+                    <span asp-validation-for="ourt" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="input-group mb-3 d-flex flex-column">
+                <div class="input-group-append">
+                    <input asp-for="guard" class="form-control" placeholder="Gurad" required>
+                    <div class="input-group-text">
+                        <span class="fas fa-layer-group"></span>
+                    </div>
+                </div>
+                <div>
+                    <span asp-validation-for="guard" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="input-group mb-3 d-flex flex-column">
+                <div class="input-group-append">
+                    <input asp-for="allowance" class="form-control" placeholder="Allowance" required>
+                    <div class="input-group-text">
+                        <span class="fas fa-layer-group"></span>
+                    </div>
+                </div>
+                <div>
+                    <span asp-validation-for="allowance" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="input-group mb-3 d-flex flex-column">
+                <div class="input-group-append">
+                    <input asp-for="houseAllowance" class="form-control" placeholder="House Allowance" required>
+                    <div class="input-group-text">
+                        <span class="fas fa-layer-group"></span>
+                    </div>
+                </div>
+                <div>
+                    <span asp-validation-for="houseAllowance" class="text-danger"></span>
+                </div>
+            </div>
+
+
             <div class="modal-footer justify-content-between">
                 <a type="button" class="btn btn-outline-danger" asp-action="">Close</a>
-                <button type="submit" class="btn btn-danger">Save changes</button>
+                <button type="submit" class="btn btn-success">Save changes</button>
             </div>
         </form>
 

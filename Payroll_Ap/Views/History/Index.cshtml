@@ -2,3 +2,62 @@
     ViewData["Title"] = "History";
 }
 
+@model IEnumerable<Payroll_Ap.Models.Employee>
+
+@if (ViewBag.IsSucess == true)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        You have<strong> Deleted</strong>   an Employee successfully. <br />
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="card">
+
+    <!-- /.card-header -->
+    <div class="card-body">
+
+        <table id="dataTable" class="table table-bordered table-striped">
+
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Full Name</th>
+                    <th>Account Number</th>
+                    <th>Gross Salary</th>
+                    <th>Net Salary</th>
+                    <td>Date</td>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model)
+                {
+                <tr>
+                    <td>@employee.Id</td>
+                    <td>@employee.fullName</td>
+                    <td>@employee.account_number</td>
+                    <td>@employee.gross</td>
+                    <td>@employee.netSalary</td>
+                    <td>@employee.date</td>
+
+                </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Id</th>
+                    <th>Full Name</th>
+                    <th>Account Number</th>
+                    <th>Gross Salary</th>
+                    <th>Net Salary</th>
+                    <td>Date</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+

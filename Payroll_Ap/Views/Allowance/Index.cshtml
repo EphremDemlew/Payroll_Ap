@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Payroll_Ap.Models.Employee>
+
+@{
+    ViewData["Title"] = "Allowance";
+}
+<h1>View</h1>
+
+
+
+
+<table id="dataTable" class="table table-bordered table-striped ">
+    <thead>
+
+        <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Salary</th>
+            <th>Annualization</th>
+            <th>Allowance</th>
+            <th>House Allowance</th>
+            <th>Gross Salary</th>
+            <th>Pension</th>
+            <th>Total Earning</th>
+            <th>Net Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.fullName</td>
+                <td>@employee.salary</td>
+                <td>@employee.annualization</td>
+                <td>@employee.allowance</td>
+                <td>@employee.houseAllowance</td>
+                <td>@employee.gross</td>
+                <td>@employee.pension11</td>
+                <td>@employee.totalEarning</td>
+                <td>@employee.netSalary</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Salary</th>
+            <th>Annualization</th>
+            <th>Allowance</th>
+            <th>House Allowance</th>
+            <th>Gross Salary</th>
+            <th>Pension</th>
+            <th>Total Earning</th>
+            <th>Net Salary</th>
+        </tr>
+    </tfoot>
+
+</table>
+    

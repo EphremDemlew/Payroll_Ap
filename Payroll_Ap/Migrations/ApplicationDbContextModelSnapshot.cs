@@ -228,10 +228,22 @@ namespace Payroll_Ap.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long>("account_number")
+                        .HasColumnType("bigint");
+
+                    b.Property<float?>("advance")
+                        .HasColumnType("real");
+
                     b.Property<int>("age")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("date")
+                    b.Property<float?>("allowance")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("annualization")
+                        .HasColumnType("real");
+
+                    b.Property<DateTime?>("date")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("department")
@@ -239,9 +251,10 @@ namespace Payroll_Ap.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("fuculity")
+                    b.Property<string>("faculity")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -253,9 +266,33 @@ namespace Payroll_Ap.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<float?>("gross")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("guard")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("houseAllowance")
+                        .HasColumnType("real");
+
                     b.Property<string>("jobTitle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<float?>("netSalary")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("others")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("ourt")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("pension11")
+                        .HasColumnType("real");
+
+                    b.Property<float>("pension18")
+                        .HasColumnType("real");
 
                     b.Property<string>("phoneNumber")
                         .IsRequired()
@@ -264,106 +301,21 @@ namespace Payroll_Ap.Migrations
                     b.Property<float>("salary")
                         .HasColumnType("real");
 
-                    b.Property<string>("userName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Employee");
-                });
-
-            modelBuilder.Entity("Payroll_Ap.Models.FinanceStaff", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("age")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("fullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("jobTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("phoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FinanceStaffs");
-                });
-
-            modelBuilder.Entity("Payroll_Ap.Models.Payroll", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Absent")
-                        .HasColumnType("int");
-
-                    b.Property<float>("Allowance")
+                    b.Property<float?>("saving")
                         .HasColumnType("real");
 
-                    b.Property<float>("Deduction")
+                    b.Property<float?>("tax")
                         .HasColumnType("real");
 
-                    b.Property<string>("Gross")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float?>("totalDeduction")
+                        .HasColumnType("real");
 
-                    b.Property<float>("NetSalary")
+                    b.Property<float?>("totalEarning")
                         .HasColumnType("real");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Payrolls");
-                });
-
-            modelBuilder.Entity("Payroll_Ap.Models.Tax", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("Deduction")
-                        .HasColumnType("real");
-
-                    b.Property<int>("finalSalary")
-                        .HasColumnType("int");
-
-                    b.Property<int>("initSalary")
-                        .HasColumnType("int");
-
-                    b.Property<int>("taxRate")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Taxs");
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

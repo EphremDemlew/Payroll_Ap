@@ -2,65 +2,87 @@
     ViewData["Title"] = "Employee";
 
 }
-   @model IEnumerable<Payroll_Ap.Models.Employee>
+@model IEnumerable<Payroll_Ap.Models.Employee>
 
+        @if (ViewBag.IsSucess == true)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                You have<strong> Deleted</strong>   an Employee successfully. <br />
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
 
-<div class="card">
     <div class="card-header mr-5 d-flex justify-content-sm-end">
-        <a asp-action="AddNewEmployee" asp-controller="Employee" class="btn btn-outline-primary btn-sm" ><i class="fa fa-plus"></i> Add Employee</a>
+        <a asp-action="AddNewEmployee" asp-controller="Employee" class="btn btn-outline-primary btn-sm"><i class="fa fa-plus"></i> Add Employee</a>
     </div>
     <!-- /.card-header -->
-    <div class="card-body">
+    <!-- /.card-body -->
 
-        <table id="dataTable" class="table table-bordered table-striped">
 
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Gender</th>
-                    <th>Salary</th>
-                    <th>Age</th>
-                    <th>Title</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach(var employee in Model){
+    <table id="dataTable" class="table table-bordered table-striped">
+        <thead>
+
+            <tr>
+                <th>Id</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Salary</th>
+                <th>Title</th>
+                <th>Gros</th>
+                <th>TotalEarn</th>
+                <th>Tax</th>
+                <th>totalDed</th>
+                <th>netSalary</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
                 <tr>
                     <td>@employee.Id</td>
                     <td>@employee.fullName</td>
                     <td>@employee.email</td>
                     <td>@employee.phoneNumber</td>
-                    <td>@employee.gender</td>
                     <td>@employee.salary</td>
-                    <td>@employee.age</td>
                     <td>@employee.jobTitle</td>
-                    <td><strong><a asp-action="Edit" asp-controller="Employee" asp-route-id="@employee.Id" class="btn btn-success">Edit</a> &nbsp; <a asp-action="Delete" asp-controller="Employee" asp-route-id="@employee.Id" class="btn btn-danger">Delete</a></strong></td>
-                </tr>
-                }
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>Id</th>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Gender</th>
-                    <th>Salary</th>
-                    <th>Age</th>
-                    <th>Title</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-    <!-- /.card-body -->
-</div>
+                    <td>@employee.gross</td>
+                    <td>@employee.totalEarning</td>
+                    <td>@employee.tax</td>
+                    <td>@employee.totalDeduction</td>
+                    <td>@employee.netSalary</td>
 
 
-    @section Scripts{
-        <script src="~/js/employeeList.js"></script>
-    }
+                    <td>
+                        <strong>
+                            <a asp-action="Edit" asp-controller="Employee" asp-route-id="@employee.Id" class="btn btn-success btn-sm px-4 mb-1">Edit</a> &nbsp;
+                            <a asp-action="Delete" asp-controller="Employee" asp-route-id="@employee.Id" class="btn btn-danger  btn-sm px-3 mb-1" onclick="return confirm('Are You Sure You want to Delete?');">Delete</a>
+                        </strong>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Salary</th>
+                <th>Title</th>
+                <th>Gros</th>
+                <th>TotalEarn</th>
+                <th>Tax</th>
+                <th>totalDed</th>
+                <th>netSalary</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+
+    </table>
+    
+
+

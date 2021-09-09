@@ -14,9 +14,8 @@ namespace Payroll_Ap.Models
         {
 
         }
-        public DbSet<Employee> Employee { get; set; }
-        public DbSet<FinanceStaff> FinanceStaffs { get; set; }
-        public DbSet<Payroll>Payrolls { get; set; }
-        public DbSet<Tax> Taxs { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+
+
     }
 }

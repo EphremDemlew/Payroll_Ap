@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Payroll_Ap.Models.Employee>
+
+@{
+    ViewData["Title"] = "Deduction";
+}
+
+<h1 class="offset-sm-4">Deduction</h1>
+
+
+<table  id="dataTable" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                Full Name
+            </th>
+            <th>
+                Advance
+            </th>
+            <th>
+                Tax
+            </th>
+
+            <th>
+                Pension
+            </th>
+            <th>
+                Other Deduction Types
+            </th>
+            <th>
+                Saving 
+            </th>
+            <th>
+                Guard
+            </th>
+          
+            <th>
+                Court Order
+            </th>
+
+            <th>
+                Total Deduction
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fullName)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.advance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pension18)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.others)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.saving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.guard)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ourt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalDeduction)
+            </td>
+
+
+        </tr>
+        }
+    </tbody>
+</table>

@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Payroll_Ap.Helpers;
 using Payroll_Ap.Models;
 using Payroll_Ap.Repository;
+using Payroll_Ap.Services;
 using Payroll_Ap.Views.Repository;
 using System;
 using System.Collections.Generic;
@@ -31,13 +32,15 @@ namespace Payroll_Ap
         {
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
     
             services.AddScoped<EmployeeRepository, EmployeeRepository>();
+
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimsPrincipalFactory>();
+            services.AddScoped<IUserService, UserService>();
 
             services.ConfigureApplicationCookie(config =>
             {

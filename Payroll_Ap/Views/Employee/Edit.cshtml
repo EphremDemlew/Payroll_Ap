@@ -3,74 +3,130 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<div class="ml-sm-5">
+    <h1>Edit Employee Information</h1>
+    <hr />
+</div>
 
-<h1>Edit</h1>
-
-<h4>Employee</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+    <div class="card ml-5">
+    <div class="m-5">
         <form method="post" asp-action="EditPost" asp-controller="Employee">
-                <input asp-for="Id" hidden />
+            <input asp-for="Id" hidden />
             <div class="form-group">
-                <label asp-for="fullName" class="control-label"></label>
+                <label asp-for="fullName" class="control-label">Full Name</label>
                 <input asp-for="fullName" class="form-control" />
                 <span asp-validation-for="fullName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="userName" class="control-label"></label>
-                <input asp-for="userName" class="form-control" />
-                <span asp-validation-for="userName" class="text-danger"></span>
+                <label asp-for="email" class="control-label">Email</label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="gender" class="control-label"></label>
-                <input asp-for="gender" class="form-control" />
+                <label asp-for="account_number" class="control-label">Account Number</label>
+                <input asp-for="account_number" class="form-control" />
+                <span asp-validation-for="account_number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="gender" class="control-label">Gender</label>
+                <select asp-for="gender" class="form-control">
+                    <option value="">Please Select a Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
                 <span asp-validation-for="gender" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="age" class="control-label"></label>
+                <label asp-for="age" class="control-label">Age</label>
                 <input asp-for="age" class="form-control" />
                 <span asp-validation-for="age" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="jobTitle" class="control-label"></label>
+                <label asp-for="jobTitle" class="control-label">Job Title</label>
                 <input asp-for="jobTitle" class="form-control" />
                 <span asp-validation-for="jobTitle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="salary" class="control-label"></label>
+                <label asp-for="salary" class="control-label">Salary</label>
                 <input asp-for="salary" class="form-control" />
                 <span asp-validation-for="salary" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="fuculity" class="control-label"></label>
-                <input asp-for="fuculity" class="form-control" />
-                <span asp-validation-for="fuculity" class="text-danger"></span>
+                <label asp-for="faculity" class="control-label">Faculity</label>
+                <input asp-for="faculity" class="form-control" />
+                <span asp-validation-for="faculity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="department" class="control-label"></label>
+                <label asp-for="department" class="control-label">Department</label>
                 <input asp-for="department" class="form-control" />
                 <span asp-validation-for="department" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="phoneNumber" class="control-label"></label>
+                <label asp-for="phoneNumber" class="control-label">Phone Number</label>
                 <input asp-for="phoneNumber" class="form-control" />
                 <span asp-validation-for="phoneNumber" class="text-danger"></span>
             </div>
+
+
+            @*  *@
+
+
+
+
             <div class="form-group">
-                <label asp-for="email" class="control-label"></label>
-                <input asp-for="email" class="form-control" />
-                <span asp-validation-for="email" class="text-danger"></span>
+                <label asp-for="advance" class="control-label">Advance</label>
+                <input asp-for="advance" class="form-control" />
+                <span asp-validation-for="advance" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="others" class="control-label">Other Ded</label>
+                <input asp-for="others" class="form-control" />
+                <span asp-validation-for="others" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="saving" class="control-label">Saving</label>
+                <input asp-for="saving" class="form-control" />
+                <span asp-validation-for="saving" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ourt" class="control-label">Court Order</label>
+                <input asp-for="ourt" class="form-control" />
+                <span asp-validation-for="ourt" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="guard" class="control-label">Guard</label>
+                <input asp-for="guard" class="form-control" />
+                <span asp-validation-for="guard" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="allowance" class="control-label">Allowance</label>
+                <input asp-for="allowance" class="form-control" />
+                <span asp-validation-for="allowance" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="houseAllowance" class="control-label">House Allowance</label>
+                <input asp-for="houseAllowance" class="form-control" />
+                <span asp-validation-for="houseAllowance" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group float-right mr-5">
+                <input type="submit" value="Save" class="btn btn-primary px-5" />
+            </div>
+
+            <div class="ml-5">
+                <a class="btn btn-outline-primary" asp-action="Index">Back to List</a>
+            </div>
+
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 

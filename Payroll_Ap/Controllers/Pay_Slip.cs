@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Payroll_Ap.Views.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,20 @@ namespace Payroll_Ap.Controllers
 
     public class Pay_Slip : Controller
     {
-        public IActionResult Index()
+
+
+        private readonly EmployeeRepository _employeeRepository = null;
+
+        public Pay_Slip(EmployeeRepository employeeRepository)
         {
-            return View();
+            _employeeRepository = employeeRepository;
+        }
+
+        [Route("/pay_slip")]
+        public async Task<ViewResult> Index()
+        {
+            var data = await _employeeRepository.GetAllEmployee();
+            return View(data);
         }
     }
 }

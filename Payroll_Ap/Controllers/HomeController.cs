@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Payroll_Ap.Models;
+using Payroll_Ap.Views.Repository;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,9 +17,12 @@ namespace Payroll_Ap.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly EmployeeRepository _employeeRepository = null;
+
+        public HomeController(ILogger<HomeController> logger , EmployeeRepository employeeRepository)
         {
             _logger = logger;
+            _employeeRepository = employeeRepository;
         }
         [Route("/Home")]
         [Route("/Home/Index")]
@@ -27,10 +31,6 @@ namespace Payroll_Ap.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
         public IActionResult Profile()
         {
             return View();
@@ -41,5 +41,7 @@ namespace Payroll_Ap.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }

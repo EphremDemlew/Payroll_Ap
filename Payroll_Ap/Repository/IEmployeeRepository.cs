@@ -9,11 +9,10 @@ namespace Payroll_Ap.Views.Repository
         Task<int> AddNewEmployee(Employee model);
         Task<int> AddNewEmployeeById(Employee model);
         Task<List<Employee>> GetAllEmployee();
-        Task<Employee> GetEmployeeByIdAsync(int id);
+        Task<Employee> GetEmployeById(int id);
         List<Employee> SearchEmployee(string userName, string departmentName);
-        Employee Update(Employee employeeChanges);
+        Task<Employee> Update(Employee employeeChanges);
         Employee Delete(int id);
-        Employee GetEmp(int id);
 
 
     }

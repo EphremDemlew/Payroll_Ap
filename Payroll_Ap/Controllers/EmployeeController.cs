@@ -21,6 +21,7 @@ namespace Payroll_Ap.Controllers
         }
 
         [Route("/Employee")]
+        
         public async Task<ViewResult> Index()
         {
             var data = await _employeeRepository.GetAllEmployee();
@@ -28,62 +29,50 @@ namespace Payroll_Ap.Controllers
         }
 
         [Route("/Employee/Delete")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id, bool isSucess = false)
         {
-
+            ViewBag.IsSucess = isSucess;
             var delt = _employeeRepository.Delete(id);
-            return RedirectToAction(actionName: nameof(Index));
-
-
+            return RedirectToAction(actionName: nameof(Index) , new { isSucess = true} );
+            
         }
 
         [Route("/Employee/Edit")]
         public async Task<ViewResult> Edit(int id)
         {
-            var data = await _employeeRepository.GetBookById(id);
+            var data = await _employeeRepository.GetEmployeById(id);
             return View(data);
         }
 
-        public ViewResult AddNewEmployee()
+        public ViewResult AddNewEmployee(bool isSucess = false)
         {
-
+            ViewBag.IsSucess = isSucess;
             return View();
         }
-
-        //public Employee GetEmployee(int id)
-        //{
-        //    return _employeeRepository.GetEmployeeByIdAsync(id);
-        //}
-        //public List<Employee> SearchEmployees(string fullname, string departmentname)
-        //{
-        //    return _employeeRepository.SearchEmployee(fullname, departmentname);
-        //}
-
-
-
+       
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddNewEmployee(Employee employeeModel)
         {
             if (ModelState.IsValid)
             {
-
                 int eid = await _employeeRepository.AddNewEmployee(employeeModel);
                 if ( eid > 0 )
                 {
-                    return RedirectToAction(nameof(AddNewEmployee) , new { isSucess = true } );
-
+                    return RedirectToAction(nameof(AddNewEmployee) , new { isSucess = true });
                 }
             }
             return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditPost(Employee employeeModel)
         {
             if (ModelState.IsValid)
             {
 
-                var eid =  _employeeRepository.Update(employeeModel);
+                var eid = await _employeeRepository.Update(employeeModel);
                 if (eid != null)
                 {
                     return RedirectToAction(nameof(Index));
@@ -93,70 +82,5 @@ namespace Payroll_Ap.Controllers
             return View();
         }
 
-
-
-
-        //public IActionResult Upsert(int? id)
-        //{
-        //    Employee = new Employee();
-        //    if(id == null)
-        //    {
-        //        //create
-        //        return View(Employee);
-        //    }
-        //    //update
-        //    Employee = _db.Employees.FirstOrDefault(u => u.Id == id);
-        //    if(Employee == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(Employee);
-        ////}
-
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Upsert()
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (Employee.Id == 0)
-        //        {
-        //            //create
-        //            _db.Employees.Add(Employee);
-        //        }
-        //        else
-        //        {
-        //            _db.Employees.Update(Employee);
-        //        }
-        //        _db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(Employee);
-        //}
-
-
-        //#region API Calls
-        //[HttpGet]
-        //    public async Task<IActionResult> GetAll()
-        //    {
-        //        return Json(new { data = await _db.Employees.ToListAsync() });
-        //    }
-
-        //    [HttpDelete]
-        //    public async Task<IActionResult> Delete(int id)   
-        //    {
-        //        var empFromDb = await _db.Employees.FirstOrDefaultAsync(u => u.Id == id);
-        //        if (empFromDb == null)
-        //        {
-        //            return Json(new { success = false, message = "Error while Deleting" });
-        //        }
-        //        _db.Employees.Remove(empFromDb);
-        //        await _db.SaveChangesAsync();
-        //        return Json(new { success = true, message = "Delete successful" });
-        //    }
-
-        //    #endregion
     }
 }
